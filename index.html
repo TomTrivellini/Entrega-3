@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <div class="flip-piloto">
+        <div class="flip-piloto-inner">
+                <div class="flip-piloto-front" id="showPilotImg"></div>
+                <div class="flip-piloto-back">
+                <p id="showPilotName"></p>
+                <div id="pilotIcons" class="planet-icons"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="parrafo"><p>Visita y conoce todo el sistema para completar tu mision</p></div>
+    <main class="galaxia">
+
+        <div class="planeta-container"><a href="./pages/blackhole.html"><img src="./assets/planetas/blackhole.gif" alt="un agujero negro!!" class="planeta-btn"></a></div>
+        <div class="planeta-container"><a href="./pages/planetGG.html"><img src="./assets/planetas/planetGG.gif" alt="un gigante gaseoso hostil para la mayoria de seres!" class="planeta-btn"></a></div>
+        <div class="planeta-container"><a href="./pages/planetD.html"><img src="./assets/planetas/planet2.gif" alt="Planeta seco con seres adaptados!" class="planeta-btn"></a></div>
+        <div class="planeta-container"><a href="./pages/planetW.html"><img src="./assets/planetas/planetW.gif"  alt="Planeta con agua y vida!" class="planeta-btn"></a></div>
+        
+        <div class="planeta-container"><a href="./pages/sun.html"><img src="./assets/planetas/sun.gif" alt="una estrella blanca, la principal de este sistema" class="planeta-btn"></a></div>
+    
+    </main>
+
+
+<div class="menu-fab">
+<button id="menu-toggle" class="menu-btn">☰</button>
+
+<div class="menu-panel" id="menu-panel">
+    <button id="clear-storage" >Borrar progreso</button>
+    <a href="./pages/pilot-form.html">✏ Modificar piloto</a>
+    <button id="btn-frase">💬 Frase aleatoria</button>
+    <p id="frase-output" class="frase"></p>
+</div>
+
+    <script>
+        //Nombre del piloto
+        const name = localStorage.getItem('pilotName');
+        document.getElementById('showPilotName').textContent = name ? `Piloto: ${name}` : 'piloto sin nombre';
+        //avatar del piloto
+        const imgFile = localStorage.getItem('pilotImg');
+        const imgElem = document.getElementById('showPilotImg');
+        if (imgFile) {
+            imgElem.style.backgroundImage = `url('./assets/pilotos/${imgFile}')`;} 
+            else {
+            imgElem.style.backgroundImage = `url('./assets/pilotos/${imgFile}')`;}
+
+
+        const PLANETS = ['blackhole', 'planetD', 'planetW', 'planetGG', 'sun']; // lista de paginas
+
+        function renderPilotBackIcons() {  //logica para mostrar los iconos de planeta visitados
+        const icons = document.getElementById('pilotIcons');
+        if (!icons) return;
+
+        const visited = JSON.parse(localStorage.getItem('planetasVisitados')) || [];
+
+        // Si no hay progreso, ocultamos la grilla
+        if (visited.length === 0) {
+        icons.innerHTML = '';
+        icons.style.display = 'none';
+        return;}
+        icons.style.display = 'grid';
+        let cells = PLANETS.map(id => {
+        const ok = visited.includes(id);
+        return `<span class="planet-slot ${ok ? 'visited' : ''}" title="${id}">${ok ? '✪' : '★'}</span>`;});
+
+        while (cells.length < 5) {
+        cells.push('<span class="planet-slot placeholder"></span>');}
+        icons.innerHTML = cells.join('');}
+
+        // Llamar al cargar
+        document.addEventListener('DOMContentLoaded', renderPilotBackIcons);
+
+        // Botón "Borrar progreso" para eleminar los iconos de planeta visitado
+        document.getElementById("clear-storage").addEventListener("click", () => {
+        if (confirm("¿Seguro que querés borrar el progreso?")) {
+        localStorage.removeItem("planetasVisitados");
+        location.reload();}});
+        
+        // Lógica para voltear la tarjeta del piloto
+        document.querySelectorAll('.flip-piloto').forEach(card => {
+        card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+        });});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+const menuToggle = document.getElementById("menu-toggle");
+const menuFab = document.querySelector(".menu-fab");
+const btnBorrar = document.getElementById("btn-borrar");
+const btnFrase = document.getElementById("btn-frase");
+const fraseOutput = document.getElementById("frase-output");
+
+const frases = [
+    "Tienes que visitar todos los planetas.",
+    "Soy tu asistente, desde aquí puedes modificar tu personaje o borrar el progreso.",
+    "Botón de destrucción interplanetario en la próxima versión...",
+    "¡Explora más para descubrir secretos!",
+    "Tu misión aún no ha terminado..."
+];
+
+menuToggle.addEventListener("click", () => {
+    menuFab.classList.toggle("open");
+});
+
+btnBorrar.addEventListener("click", () => {
+    localStorage.clear();
+    alert("Progreso borrado");
+    location.reload();
+});
+
+btnFrase.addEventListener("click", () => {
+    const randomIndex = Math.floor(Math.random() * frases.length);
+    fraseOutput.textContent = frases[randomIndex];
+});
+});
+
+</script>
+
+</body>
+</html>
