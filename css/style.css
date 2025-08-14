@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
@@ -8,19 +8,36 @@
 /* colores */
 body {
   font-family: "Titillium Web", Arial, sans-serif;
-  color: #68996B;
+  color: rgb(125, 243, 78);
   background-image: url("../assets/backgrounds/backgrounds.png");
+  background-repeat: no-repeat;
+}
+
+p {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(2, 78, 49, 0.445), rgba(14, 80, 49, 0.671));
+  border: 1px solid rgba(0, 255, 157, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 255, 157, 0.7);
+  padding: 0.5rem 1rem;
+  color: #00ff9d;
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+  text-shadow: 0 0 5px #00ff9d;
+  max-width: 90%;
+  margin: 0.5rem auto;
 }
 
 .galaxia {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
 }
 
 body.blackhole {
-  background: url("../assets/backgrounds/background_fachero.png");
+  background: url("../assets/backgrounds/spaceBG.png");
 }
 
 body.planetGG {
@@ -39,11 +56,166 @@ body.sun {
   background: url("../assets/backgrounds/background_electric.png");
 }
 
-.agujero-gusano {
-  width: 25vh;
-  height: 25vh;
+.planeta-fondo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vh;
+  height: 75vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
+/* colores */
+.flip-piloto {
+  width: min(200px, 50vw);
+  aspect-ratio: 3/4;
+  perspective: 2000px;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px #68996B, 0 0 20px rgba(104, 153, 107, 0.6);
+  transition: transform 0.2s ease;
+}
+.flip-piloto:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px #68996B, 0 0 30px rgba(104, 153, 107, 0.8);
+}
+.flip-piloto-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.1, 0.22, 0.8, 1.13);
+  transform-style: preserve-3d;
+}
+.flip-piloto-front, .flip-piloto-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  backface-visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #68996B;
+  box-shadow: 0 0 8px rgba(104, 153, 107, 0.7), inset 0 0 10px rgba(104, 153, 107, 0.4);
+}
+.flip-piloto-front {
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 20, 10, 0.8);
+}
+.flip-piloto-back {
+  font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+  padding: 1rem;
+  transform: rotateY(180deg);
+  box-sizing: border-box;
+}
+.flip-piloto.flipped .flip-piloto-inner {
+  transform: rotateY(-180deg);
+}
+
+.pilot-checklist {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  width: 100%;
+  max-width: 120px;
+  margin: 0 auto;
+}
+.pilot-checklist .planet-slot {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(104, 153, 107, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.planet-icons .planet-slot {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.planet-icons .planet-slot.visited {
+  color: #111;
+  transform: scale(1.05);
+}
+
+/* colores */
+.form-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.form-wrapper {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 255, 200, 0.5);
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+
+#pilotCarousel .carousel-inner {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+#pilotCarousel .carousel- img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1) drop-shadow(0 0 3px cyan);
+}
+
+.btn {
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+/* colores */
+.planeta-btn {
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+.planeta-btn:hover {
+  animation: warp-shake 0.3s infinite ease-in-out;
+}
+
+@keyframes warp-shake {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(2px, -2px) scale(1);
+  }
+  50% {
+    transform: translate(-2px, 2px) scale(1);
+  }
+  75% {
+    transform: translate(1px, -1px) scale(1);
+  }
+}
+/* colores */
 .menu-fab {
   position: fixed;
   bottom: 5vh;
@@ -112,151 +284,6 @@ body.sun {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-/* colores */
-.flip-piloto {
-  /* tamaño base, escalable */
-  width: min(150px, 40vw);
-  aspect-ratio: 3/4; /* proporción carta */
-  perspective: 2000px;
-  border-radius: 1rem;
-  box-shadow: 0 0 10px #68996B;
-}
-.flip-piloto-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.55s cubic-bezier(0.1, 0.22, 0.8, 1.13);
-  transform-style: preserve-3d;
-}
-.flip-piloto-front, .flip-piloto-back {
-  position: absolute;
-  inset: 0; /* ocupa todo */
-  border-radius: 1rem;
-  backface-visibility: hidden;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.flip-piloto-front {
-  background-size: cover;
-  background-position: center;
-  background-color: #68996B;
-}
-.flip-piloto-back {
-  font-size: clamp(0.9rem, 2.5vw, 1.25rem);
-  padding: 1rem;
-  color: black;
-  background-color: #68996B;
-  transform: rotateY(180deg);
-  box-sizing: border-box;
-}
-.flip-piloto.flipped .flip-piloto-inner {
-  transform: rotateY(-180deg);
-}
-
-.pilot-checklist {
-  display: grid;
-  grid-template-columns: 1;
-  gap: 8px;
-  width: 100%;
-  max-width: 120px;
-}
-.pilot-checklist .planet-slot {
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
-  background-color: #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-.pilot-checklist .planet-slot.visited {
-  background-color: #68996B;
-  color: white;
-}
-
-.planet-icons .planet-slot {
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
-  background-color: #68996B;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.planet-icons .planet-slot.visited {
-  background-color: gold;
-  color: #111;
-  transform: scale(1.05);
-}
-
-/* colores */
-#pilotForm {
-  border-radius: 1rem;
-  padding: 2rem;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 0 20px rgba(0, 255, 200, 0.5);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-#pilotCarousel .carousel-inner {
-  border-radius: 0.5rem;
-  overflow: hidden;
-}
-#pilotCarousel .carousel- img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  filter: invert(1) drop-shadow(0 0 3px cyan);
-}
-
-/* colores */
-.planeta-btn {
-  transition: transform 0.3s ease;
-  transform-origin: center;
-}
-.planeta-btn:hover {
-  animation: warp-shake 0.3s infinite ease-in-out;
-}
-.planeta-btn.warp-target {
-  animation: warp-zoom 1s ease-in-out forwards;
-}
-
-@keyframes warp-shake {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(2px, -2px) scale(1);
-  }
-  50% {
-    transform: translate(-2px, 2px) scale(1);
-  }
-  75% {
-    transform: translate(1px, -1px) scale(1);
-  }
-}
-@keyframes warp-zoom {
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-  100% {
-    transform: scale(20) translate(5%, -3%);
   }
 }
 

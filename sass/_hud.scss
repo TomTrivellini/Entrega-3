@@ -1,0 +1,70 @@
+@import    "variables";
+
+.menu-fab {
+position: fixed;
+bottom: 5vh;
+right: 5vh;
+
+
+.menu-btn {
+    background: $verde; 
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px $verde;
+    transition: transform 0.3s ease;
+    &:hover {
+    transform: scale(1.1) rotate(5deg);
+    }
+}
+
+.menu-panel {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #0ff;
+
+    a,
+    button {
+    background: transparent;
+    border: 1px solid #0ff;
+    color: #0ff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.3s ease;
+    font-size: 0.9rem;
+
+&:hover {
+        background: #0ff;
+        color: black;
+    }}
+
+.frase {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #ccc;
+    font-style: italic;
+    }}
+
+&.open .menu-panel {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,15 +1,24 @@
 @import 'variables';
 
+.form-page {
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 1rem;
+}
 
-#pilotForm {
-border-radius: 1rem;
+.form-wrapper {
+background: rgba(0, 0, 0, 0.6);
 padding: 2rem;
-width: 100%;
-max-width: 400px;
+border-radius: 1rem;
 box-shadow: 0 0 20px rgba(0, 255, 200, 0.5);
+width: 100%;
+max-width: 450px;
 display: flex;
 flex-direction: column;
 gap: 1rem;
+text-align: center;
 }
 
 
@@ -31,3 +40,7 @@ img {
 .carousel-control-next-icon {
     filter: invert(1) drop-shadow(0 0 3px cyan);}
 
+.btn {
+border-radius: 0.5rem;
+text-decoration: none;
+}

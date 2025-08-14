@@ -8,9 +8,6 @@
         animation: warp-shake 0.3s infinite ease-in-out;
     }
 
-    &.warp-target {
-        animation: warp-zoom 1s ease-in-out forwards;
-    }
 }
 
 // Efecto de turbulencia/sacudida
@@ -19,10 +16,4 @@
     25% { transform: translate(2px, -2px) scale(1); }
     50% { transform: translate(-2px, 2px) scale(1); }
     75% { transform: translate(1px, -1px) scale(1); }
-}
-
-// Animación principal de acercamiento
-@keyframes warp-zoom {
-    0% { transform: scale(1) translate(0, 0); }
-    100% { transform: scale(20) translate(5%, -3%); }
 }
