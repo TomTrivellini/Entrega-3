@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="sun">
+        <nav class="nav">
+        <a href="../index.html"> <img src="../assets/planetas/galaxy.gif" alt="agujero de gusano que te lleva al sistema" class="planeta-btn"></a>
+        </nav>
+    </nav>
+
+    <main>
+        <div class="blackhole-container">
+            <img src="../assets/planetas/sun.gif" alt="La estrella que le da vida a este planeta" class="Sun-img">
+            <p>☀️ La Estrella Blanca
+En el centro del sistema arde Ilyos, una estrella blanca cuya luz intensa obliga a todos los planetas a desarrollar defensas naturales o artificiales contra la radiación. Se cree que su color se debe a un equilibrio inusual entre temperatura y composición, un fenómeno que ha permitido que los mundos cercanos reciban calor sin ser calcinados. Las civilizaciones más antiguas adaptaron sus ritmos y arquitecturas a la intensidad de su brillo, construyendo calendarios basados en los pulsos luminosos de Ilyos. Para algunos, es un símbolo de vida; para otros, un recordatorio constante de que incluso una estrella puede consumirlo todo… si despierta en exceso.</p>
+    </main>
+    <script>
+        function marcarPlanetaVisitado(planetaId) {
+    let visitados = JSON.parse(localStorage.getItem('planetasVisitados')) || [];
+    if (!visitados.includes(planetaId)) {
+        visitados.push(planetaId);
+        localStorage.setItem('planetasVisitados', JSON.stringify(visitados));
+    }
+}
+
+marcarPlanetaVisitado('sun');
+    </script>
+</body>
+</html>
