@@ -1,0 +1,117 @@
+
+@use "variables" as *;
+
+.crew-card {
+display: flex;
+align-items: center;
+gap: 1.5rem;
+background: $fondoTexto;
+border-radius: 1.5rem;
+box-shadow: $boxshadow;
+padding: 1.5rem;
+margin: 1.5rem;
+color: $fuente;
+font-family: $font;
+transition: box-shadow 0.3s;
+  &:hover {
+    box-shadow: 0 0 10px $fuente;
+}
+  .crew-photo {
+    flex-shrink: 0;
+    width: 140px;
+    height: 140px;
+    border-radius: 1rem;
+    box-shadow: $boxshadow;
+  }
+  .crew-image {
+  width: 100%;
+  height: auto;
+  max-width: 220px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: inherit;
+  transition: transform 0.3s;
+  &:hover {
+    transform: scale(1.05) rotate(-2deg);
+  }
+  }
+  .crew-info {
+    h2 {
+    margin-bottom: 0.8rem;
+    color: $fuente;
+    text-shadow: $textshadow;
+    }
+    p {
+    display: block;
+    margin-bottom: 0.7rem;
+    line-height: 1.5;
+    color: $fuente;
+    background: rgba(0,0,0,0.2);
+    border-radius: 0.5rem;
+    box-shadow: $boxshadow;
+    }
+    .crew-phrase {
+    font-style: italic;
+    color: $verde;
+    margin-top: 1rem;
+    text-shadow: 0 0 6px $verde;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .crew-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 1rem;
+    .crew-photo {
+    width: 100px;
+    height: 100px;
+    }
+    .crew-info {
+    h2 { font-size: 1.2rem; }
+    p, .crew-phrase { font-size: 0.95rem; }
+    }
+  }
+  .grid-card {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+  }
+  .crew-image {
+    max-width: 120px;
+  }
+.grid-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 0;
+  }}
+
+.battlefield-grid {
+  display: grid;
+  grid-template-areas:
+    "b . a"
+    ". d ."
+    "i . c"
+    ". e f"
+    "g . h";
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 110px);
+  padding: 1.5rem 0;
+
+}
+
+.robot1 { grid-area: a; }
+.robot2 { grid-area: b; }
+.robot3 { grid-area: c; }
+.robot4 { grid-area: d; }
+.robot5 { grid-area: e; }
+.robot6 { grid-area: f; }
+.robot7 { grid-area: g; }
+.robot8 { grid-area: h; }
+.robot9 { grid-area: i; }
+

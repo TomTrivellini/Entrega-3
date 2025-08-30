@@ -1,42 +1,19 @@
-@import "variables";
+@use "variables" as *;
+*, *::before, *::after {  box-sizing: border-box;}
 
-
-body{
+html, body {
+    overflow-x: hidden; 
+    min-height: 100%; 
     font-family: $font;
-    color: rgb(125, 243, 78);
+    color: $fuente;
     background-image: $background;
-    background-repeat: no-repeat;
-}
-
-p {
+    font-size: clamp(14px, 1.5vw, 18px);
+    align-items: stretch;
     display: flex;
-    align-items: center;
-    background: linear-gradient(
-    135deg,
-    rgba(2, 78, 49, 0.445),
-    rgba(14, 80, 49, 0.671)
-    
-);
-border: 1px solid rgba(0, 255, 157, 0.4);
-border-radius: 8px;
-box-shadow: 0 0 10px rgba(0, 255, 157, 0.7);
-padding: 0.5rem 1rem;
-color: #00ff9d;
-font-family: 'Orbitron', sans-serif;
-text-align: center;
-text-shadow: 0 0 5px #00ff9d;
-max-width: 90%;
-margin: 0.5rem auto;
+    flex-direction: column;  
 }
 
 
-.galaxia{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    
-}
 body.blackhole{
     background: $backgroundfacha;
 }
@@ -57,17 +34,32 @@ body.sun{
     background: $backgroundsun;
 }
 
-.planeta-fondo{
+h2, h3 {
+    text-align: center;
+    color: $fuente;
+    text-shadow: $textshadow;
+    margin-bottom: 0.5rem;
+}
+p {
     display: flex;
-    justify-content: center;
     align-items: center;
-
-    width: 100vh;
-    height: 75vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
+    background: $fondoTexto;
+    border: 1px solid rgba(0, 255, 157, 0.4);
+    border-radius: 8px;
+    box-shadow: $boxshadow;
+    padding: 0.5rem 1rem;
+    color: $fuente;
+    text-align: center;
+    text-shadow: $textshadow;
+    max-width: 90%;
+    margin: 0.5rem auto;
 }
 
+.planeta-fondo{
+    display: block;
+    margin: 2rem auto;
+    max-width: 250px;
+    width: 80vw;
+    height: auto;
 
+}

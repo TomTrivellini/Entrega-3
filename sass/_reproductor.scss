@@ -1,0 +1,64 @@
+@use "variables" as *;
+
+.reproductor-musica {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  background: $fondoTexto;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 20px $fuente;
+  padding: 1rem 2rem;
+  margin: 2rem auto;
+  max-width: 400px;
+
+  .reproductor-btn {
+    background: $fondoTexto;
+    color: $fuente;
+    border: 1px solid $verde;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px $fuente;
+    transition:  0.3s, transform 0.3s;
+
+    &:hover {
+      background: $verde;
+      color: #222;
+      transform: scale(1.08);
+    }
+  }
+
+  .reproductor-info {
+    flex: 1;
+    text-align: center;
+    color: $fuente;
+    font-family: $font;
+    font-size: 1rem;
+    text-shadow: 0 0 8px $fuente;
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .reproductor-musica {
+    flex-direction: flex;
+    gap: 0.7rem;
+    padding: 0.7rem 1rem;
+    max-width: 98vw;
+
+    .reproductor-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+    }
+    .reproductor-info {
+      font-size: 0.95rem;
+    }
+  }
+}

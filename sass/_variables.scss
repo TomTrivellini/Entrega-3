@@ -1,11 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
-$font: 'Titillium Web', Arial, sans-serif;
+/* tipografia */
+$font: 'bahnschrift', bold;
+
+/* fondos */
 $background: url('../assets/backgrounds/backgrounds.png');
-$backgroundfacha: url('../assets/backgrounds/spaceBG.png');
+$backgroundfacha: url('../assets/backgrounds/background_electric.png');
 $backgroundGG: url('../assets/backgrounds/background_planetGG.png');
 $backgroundW: url('../assets/backgrounds/background_home.png');
 $backgroundD: url('../assets/backgrounds/background_planetD.png');
 $backgroundsun: url('../assets/backgrounds/background_electric.png');
-/* colores */
-$verde: #68996B;
 
+/* colores */
+$verde: #09a143;
+$fuente: #eafff7;
+$fondoTexto: linear-gradient( 135deg, rgba(2, 78, 49, 0.445),rgba(14, 80, 49, 0.671));
+$border: rgba(0, 255, 157, 0.4);
+$boxshadow: 0 0 10px rgba(0, 255, 157, 0.7);
+$textshadow: 0 0 5px #00ff9d;

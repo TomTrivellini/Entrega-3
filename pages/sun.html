@@ -3,31 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sol - Sistema Llyos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="sun">
+<header class="header container-fluid py-2">
+  <div class="header-flex">
+    <div class="header-left">
+      <button id="audio-btn" type="button" class="btn btn-success btn-lg rounded-circle me-2" aria-label="Pausar/Reanudar audio">
+        <i class="bi bi-volume-up"></i>
+      </button>
+    </div>
+    <div class="header-center">
+      <div id="planet-stars" class="estrellas"></div>
+    </div>
+    <div class="header-right"></div>
+  </div>
+  <audio id="main-audio" loop>
+    <source src="../assets/audio/tranqui.mp3" type="audio/mpeg">
+  </audio>
+</header>
 
-    <main>
-        <div class="galaxia">
-            <a href="../index.html"> <img src="../assets/planetas/galaxy.gif" alt="agujero de gusano que te lleva al sistema" class="planeta-btn"></a>
-            
-            <img src="../assets/planetas/sun.gif" alt="La estrella que le da vida a este planeta" >
-            
-            <p>La Estrella Blanca En el centro del sistema arde Ilyos, una estrella blanca cuya luz intensa obliga a todos los planetas a desarrollar defensas naturales o artificiales contra la radiación. Se cree que su color se debe a un equilibrio inusual entre temperatura y composición, un fenómeno que ha permitido que los mundos cercanos reciban calor sin ser calcinados. Las civilizaciones más antiguas adaptaron sus ritmos y arquitecturas a la intensidad de su brillo, construyendo calendarios basados en los pulsos luminosos de Ilyos. Para algunos, es un símbolo de vida; para otros, un recordatorio constante de que incluso una estrella puede consumirlo todo… si despierta en exceso.</p>
-        </div>
-    </main>
+<p>
+  La Estrella Blanca En el centro del sistema arde Ilyos, una estrella blanca cuya luz intensa obliga a todos los planetas a desarrollar defensas naturales o artificiales contra la radiación. Se cree que su color se debe a un equilibrio inusual entre temperatura y composición, un fenómeno que ha permitido que los mundos cercanos reciban calor sin ser calcinados. Las civilizaciones más antiguas adaptaron sus ritmos y arquitecturas a la intensidad de su brillo, construyendo calendarios basados en los pulsos luminosos de Ilyos. Para algunos, es un símbolo de vida; para otros, un recordatorio constante de que incluso una estrella puede consumirlo todo… si despierta en exceso.
+</p>
+<img src="../assets/planetas/sun.gif" alt="Sol" class="planeta-fondo" data-aos="zoom-in-down" data-aos-easing="linear" data-aos-duration="1500">
 
-    <script>
-        function marcarPlanetaVisitado(planetaId) {
-    let visitados = JSON.parse(localStorage.getItem('planetasVisitados')) || [];
-    if (!visitados.includes(planetaId)) {
-        visitados.push(planetaId);
-        localStorage.setItem('planetasVisitados', JSON.stringify(visitados));
+<div class="crew-card" data-aos="flip-up">
+    <img src="../assets/tripulacion/Dj.png" alt="Sun" class="crew-photo">
+    <div class="crew-info">
+        <p>¡Piloto! Dime si este lugar no es perfecto para un show en vivo, ponte comodo y escucha un poco de musica.</p>
+    </div>
+</div>
+
+<div class="reproductor-musica" >
+  <button class="reproductor-btn" id="prev-btn" aria-label="Anterior">
+    <i class="bi bi-skip-backward-fill"></i>
+  </button>
+  <button class="reproductor-btn" id="play-btn" aria-label="Pausar/Reanudar">
+    <i class="bi bi-play-fill"></i>
+  </button>
+  <button class="reproductor-btn" id="next-btn" aria-label="Siguiente">
+    <i class="bi bi-skip-forward-fill"></i>
+  </button>
+  <div class="reproductor-info" id="song-info">Canción actual</div>
+  <audio id="audio-player"></audio>
+</div>
+
+<!--Menu-->
+<div class="menu-fab">
+<img src="../assets/planetas/sun.gif" id="menu-toggle" class="menu-btn" alt="Menú">
+<div class="menu-panel" id="menu-panel">
+    <a href="./planetD.html"><img src="../assets/planetas/planet2.gif" alt="Planeta D" class="planeta-btn"></a>
+    <a href="./planetW.html"><img src="../assets/planetas/planetW.gif" alt="Planeta W" class="planeta-btn"></a>
+    <a href="./blackhole.html"><img src="../assets/planetas/blackhole.gif" alt="Agujero negro" class="planeta-btn"></a>
+    <a href="./planetGG.html"><img src="../assets/planetas/planetGG.gif" alt="Planeta GG" class="planeta-btn"></a>
+    <a href="./sun.html"><img src="../assets/planetas/sun.gif" alt="Sol" class="planeta-btn"></a>
+    <a href="../index.html">Sala de tripulacion</a>
+    <a href="./pilot-form.html">✏ Modificar piloto</a>
+</div>
+</div>
+
+<script>
+// Constantes globales
+const PLANETS = ['blackhole', 'planetD', 'planetW', 'planetGG', 'sun'];
+const visited = JSON.parse(localStorage.getItem('planetasVisitados')) || [];
+
+// Mostrar estrellas por planetas visitados
+const stars = PLANETS.map(id => visited.includes(id) ? '✪' : '☆').join(' ');
+document.getElementById('planet-stars').textContent = stars;
+
+// Marcar esta página como visitada
+function marcarPlanetaVisitado(planetaId) {
+  let visitados = JSON.parse(localStorage.getItem('planetasVisitados')) || [];
+  if (!visitados.includes(planetaId)) {
+    visitados.push(planetaId);
+    localStorage.setItem('planetasVisitados', JSON.stringify(visitados));
+  }
+}
+marcarPlanetaVisitado('sun');
+
+// Menú flotante
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menu-toggle");
+  const menuFab = document.querySelector(".menu-fab");
+  menuToggle.addEventListener("click", () => {
+    menuFab.classList.toggle("open");
+  });
+});
+
+// --- AUDIO CONTROL LOGIC ---
+const headerAudio = document.getElementById('main-audio');
+const audioBtn = document.getElementById('audio-btn');
+const playerAudio = document.getElementById('audio-player');
+const playBtn = document.getElementById('play-btn');
+const nextBtn = document.getElementById('next-btn');
+const prevBtn = document.getElementById('prev-btn');
+const songInfo = document.getElementById('song-info');
+
+const songs = [
+  { src: "../assets/audio/cyberpsycosis-187772.mp3", name: "cyberpsycosis" },
+  { src: "../assets/audio/GG.mp3", name: "perdi el nombre :c" },
+  { src: "../assets/audio/problems-188614.mp3", name: "problems" }
+];
+let currentSong = 0;
+let isPlayerPlaying = false;
+let isHeaderPlaying = false;
+
+// --- HEADER AUDIO BUTTON ---
+audioBtn.addEventListener('click', () => {
+  if (headerAudio.paused) {
+    headerAudio.play();
+    audioBtn.innerHTML = '<i class="bi bi-volume-up"></i>';
+    isHeaderPlaying = true;
+    // Pausa el reproductor si estaba sonando
+    if (!playerAudio.paused) {
+      playerAudio.pause();
+      playBtn.innerHTML = '<i class="bi bi-play-fill"></i>';
+      isPlayerPlaying = false;
     }
+  } else {
+    headerAudio.pause();
+    audioBtn.innerHTML = '<i class="bi bi-volume-mute"></i>';
+    isHeaderPlaying = false;
+  }
+});
+
+// --- REPRODUCTOR DE MÚSICA ---
+function loadSong(index) {
+  playerAudio.src = songs[index].src;
+  songInfo.textContent = songs[index].name;
+  if (isPlayerPlaying) {
+    playerAudio.play();
+    // Pausa el audio del header si estaba sonando
+    if (!headerAudio.paused) {
+      headerAudio.pause();
+      audioBtn.innerHTML = '<i class="bi bi-volume-mute"></i>';
+      isHeaderPlaying = false;
+    }
+  }
 }
 
-marcarPlanetaVisitado('sun');
-    </script>
+playBtn.addEventListener('click', () => {
+  if (playerAudio.paused) {
+    playerAudio.play();
+    playBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
+    isPlayerPlaying = true;
+    // Pausa el audio del header si estaba sonando
+    if (!headerAudio.paused) {
+      headerAudio.pause();
+      audioBtn.innerHTML = '<i class="bi bi-volume-mute"></i>';
+      isHeaderPlaying = false;
+    }
+  } else {
+    playerAudio.pause();
+    playBtn.innerHTML = '<i class="bi bi-play-fill"></i>';
+    isPlayerPlaying = false;
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  currentSong = (currentSong + 1) % songs.length;
+  loadSong(currentSong);
+});
+
+prevBtn.addEventListener('click', () => {
+  currentSong = (currentSong - 1 + songs.length) % songs.length;
+  loadSong(currentSong);
+});
+
+// Cargar la primera canción al iniciar
+document.addEventListener('DOMContentLoaded', () => {
+  loadSong(currentSong);
+  playBtn.innerHTML = '<i class="bi bi-play-fill"></i>';
+});
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init();
+</script>
 </body>
 </html>

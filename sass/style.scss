@@ -1,6 +1,9 @@
-@use "variables";
-@use "index";
-@use "piloto";
-@use "pilot-form";
-@use "planeta-btn";
-@use "hud";
+@use "variables" as *;
+@use "header" as *;
+@use "index" as *;
+
+@use "piloto" as *;
+@use "pilot-form" as *;
+@use "crew-card" as *;
+@use "reproductor" as *;
+@use "hud" as *;

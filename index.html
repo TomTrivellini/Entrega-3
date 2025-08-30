@@ -3,126 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sistema Llyos - Tripulación</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-<div class="parrafo"><p>Visita y conoce todo el sistema para completar tu mision</p></div>
-
-    
-    
-    
-    
-    <main class="galaxia">
-
-            <div class="flip-piloto">
-    <div class="flip-piloto-inner">
-                <div class="flip-piloto-front" id="showPilotImg"></div>
-                <div class="flip-piloto-back"> <p id="showPilotName"></p></div>
-                <div id="pilotIcons" class="planet-icons"></div>
+<header class="header">
+  <div class="header-flex">
+    <div class="header-left">
+      <button id="audio-btn" type="button" class="btn btn-success btn-lg rounded-circle me-2" aria-label="Pausar/Reanudar audio">
+        <i class="bi bi-volume-up"></i>
+      </button>
     </div>
+    <div class="header-center">
+      <div id="planet-stars" class="estrellas"></div>
     </div>
+    <div class="header-right"></div>
+  
+  <audio id="main-audio" loop>
+    <source src="./assets/audio/tranqui.mp3" type="audio/mpeg">
+  </audio>
+  </div>
+</header>
 
-        <div class="planeta-container"><a href="./pages/blackhole.html"><img src="./assets/planetas/blackhole.gif" alt="un agujero negro!!" class="planeta-btn"></a></div>
-        <div class="planeta-container"><a href="./pages/planetGG.html"><img src="./assets/planetas/planetGG.gif" alt="un gigante gaseoso hostil para la mayoria de seres!" class="planeta-btn"></a></div>
-        <div class="planeta-container"><a href="./pages/planetD.html"><img src="./assets/planetas/planet2.gif" alt="Planeta seco con seres adaptados!" class="planeta-btn"></a></div>
-        <div class="planeta-container"><a href="./pages/planetW.html"><img src="./assets/planetas/planetW.gif"  alt="Planeta con agua y vida!" class="planeta-btn"></a></div>
-        <div class="planeta-container"><a href="./pages/sun.html"><img src="./assets/planetas/sun.gif" alt="una estrella blanca, la principal de este sistema" class="planeta-btn"></a></div>
-    
-    </main>
-
-<div class="menu-fab">
-<button id="menu-toggle" class="menu-btn">☰</button>
-
-<div class="menu-panel" id="menu-panel">
-    <button id="clear-storage" >Borrar progreso</button>
-    <a href="./pages/pilot-form.html">✏ Modificar piloto</a>
+<div class="parrafo">
+  <p>Bienvenido a bordo te necesitamos para estudiar el sistema Llyos y sus singularidades, aprende de sus seres y se te dara una insignia en tu carta de piloto por cada locacion visitada. ¡Visita y ganate esas insignias recluta!</p>
 </div>
 
-    <script>
-        //Nombre del piloto
-        const name = localStorage.getItem('pilotName');
-        document.getElementById('showPilotName').textContent = name ? `Piloto: ${name}` : 'piloto sin nombre';
-        //avatar del piloto
-        const imgFile = localStorage.getItem('pilotImg');
-        const imgElem = document.getElementById('showPilotImg');
-        if (imgFile) {
-            imgElem.style.backgroundImage = `url('./assets/pilotos/${imgFile}')`;} 
-            else {
-            imgElem.style.backgroundImage = `url('./assets/pilotos/${imgFile}')`;}
+<!--tarjeta piloto-->
+<div class="piloto-center">
+  <div class="flip-piloto">
+    <div class="flip-piloto-inner">
+      <div class="flip-piloto-front" id="showPilotImg"></div>
+      <div class="flip-piloto-back">
+        <p id="showPilotName"></p>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-        const PLANETS = ['blackhole', 'planetD', 'planetW', 'planetGG', 'sun']; // lista de paginas
 
-        function renderPilotBackIcons() {  //logica para mostrar los iconos de planeta visitados
-        const icons = document.getElementById('pilotIcons');
-        if (!icons) return;
+<div class="crew-card" data-aos="fade-up-right">
+  <img src="./assets/tripulacion/Militar.png" alt="Comandante Varek Drahl" class="crew-photo">
+  <div class="crew-info">
+    <h2>Comandante Varek Drahl</h2>
+    <p><strong>Origen:</strong> Sistema Okrann, una región desgarrada por guerras constantes entre clanes estelares.</p>
+    <p><strong>Historia:</strong> Forjado en mil batallas, sobrevivió a campañas imposibles y es considerado un estratega nato. Su rostro lleva las marcas de un incendio en la órbita de S’Tharr, cuando defendió a su flota contra piratas interestelares.</p>
+    <p><strong>Personalidad:</strong> Calculador, reservado y con una mirada que nunca revela del todo sus intenciones. Su voz tiene un tono seco que impone respeto inmediato. Muchos sospechan que sus lealtades no son claras, pero nadie puede negar que su experiencia lo convierte en un pilar de la misión.</p>
+    <p class="crew-phrase">“La guerra nunca termina, solo cambia de escenario.”</p>
+  </div>
+</div>
 
-        const visited = JSON.parse(localStorage.getItem('planetasVisitados')) || [];
+<div class="crew-card" data-aos="fade-up-left">
+  <img src="./assets/tripulacion/Doctora.png" alt="Doctora Lyra Kessan" class="crew-photo">
+  <div class="crew-info">
+    <h2>Doctora Lyra Kessan</h2>
+    <p><strong>Origen:</strong> Nebbia Prime, un planeta cubierto por mares de nubes tóxicas donde la medicina avanzada es la única defensa contra la vida hostil.</p>
+    <p><strong>Historia:</strong> Cirujana de campo en las Guerras de Nebbia, salvó incontables vidas bajo condiciones extremas. Sus manos han devuelto la esperanza a miles, pero sus ojos cargan un cansancio que ni los éxitos pueden borrar.</p>
+    <p><strong>Personalidad:</strong> Maternal y firme, inspira confianza con su voz tranquila y su mirada directa. Advierte a menudo sobre la imprevisibilidad de Varek Drahl, aunque nunca lo acusa abiertamente.</p>
+    <p class="crew-phrase">“He visto a la muerte demasiado cerca como para temerle… pero eso no significa que deba gustarme su compañía.”</p>
+  </div>
+</div>
 
-        // Si no hay progreso, ocultamos la grilla
-        if (visited.length === 0) {
-        icons.innerHTML = '';
-        icons.style.display = 'none';
-        return;}
-        icons.style.display = 'grid';
-        let cells = PLANETS.map(id => {
-        const ok = visited.includes(id);
-        return `<span class="planet-slot ${ok ? 'visited' : ''}" title="${id}">${ok ? '✪' : '★'}</span>`;});
+<div class="crew-card" data-aos="fade-up-right">
+  <img src="./assets/tripulacion/Dj.png" alt="Kael Beatwave Juno" class="crew-photo">
+  <div class="crew-info">
+    <h2>Kael “Beatwave” Juno</h2>
+    <p><strong>Origen:</strong> Sistema Luma-Trak, cuna de la música interestelar, donde las vibraciones sónicas son usadas tanto para arte como para comunicación interplanetaria.</p>
+    <p><strong>Historia:</strong> Ex DJ de guerra que mantenía la moral de las tropas en los frentes más oscuros. Su talento para mezclar frecuencias lo convierte en el ingeniero de sonido de la nave… y de paso en el alma de la tripulación.</p>
+    <p><strong>Personalidad:</strong> Relajado, carismático y siempre con una sonrisa en el rostro. Se mueve a su propio ritmo, pero en los momentos críticos logra enfocar su energía para mantener a todos unidos.</p>
+    <p class="crew-phrase">“El silencio es más peligroso que el vacío. Yo le pongo ritmo a las estrellas.”</p>
+  </div>
+</div>
 
-        while (cells.length < 5) {
-        cells.push('<span class="planet-slot placeholder"></span>');}
-        icons.innerHTML = cells.join('');}
+<div class="crew-card" data-aos="fade-up-left">
+  <img src="./assets/tripulacion/androide.png" alt="Unidad H-07 Horus" class="crew-photo">
+  <div class="crew-info">
+    <h2>Unidad H-07 “Horus”</h2>
+    <p><strong>Origen:</strong> Fabricado en los astilleros de Mekhann-4, un planeta donde la inteligencia artificial y la ingeniería son religión.</p>
+    <p><strong>Historia:</strong> Diseñado como asistente de mantenimiento, su modelo fue descartado por “demasiado servicial”. Rescatado de la chatarra por Kael, fue reprogramado para ser el ingeniero de la nave. Su eficiencia y precisión superan a cualquier humano, aunque su amabilidad robótica resulta inquietante.</p>
+    <p><strong>Personalidad:</strong> Siempre cortés, con una voz calmada que no cambia nunca de tono. Parece incapaz de enojarse o dudar. Trata a la tripulación como “amos” aunque insiste en que todos son “su prioridad operacional”.</p>
+    <p class="crew-phrase">“Su seguridad es mi protocolo. Su bienestar, mi recompensa.”</p>
+  </div>
+</div>
 
-        // Llamar al cargar
-        document.addEventListener('DOMContentLoaded', renderPilotBackIcons);
+<div class="crew-card" data-aos="fade-up-right">
+  <img src="./assets/tripulacion/perro.png" alt="Rex" class="crew-photo">
+  <div class="crew-info">
+    <h2>Rex</h2>
+    <p><strong>Origen:</strong> Criadero estelar de Kaldriss, especializado en animales para exploración y rescate.</p>
+    <p><strong>Historia:</strong> Rex fue entrenado para detectar vida en ambientes hostiles. Ha participado en operaciones de salvamento en naves destruidas y colonias colapsadas. Su instinto es casi sobrenatural y más de una vez salvó a equipos enteros.</p>
+    <p><strong>Personalidad:</strong> Leal, alegre y siempre listo para la acción. La tripulación lo considera un héroe silencioso, aunque en realidad solo busca jugar y proteger a su gente.</p>
+    <p class="crew-phrase">“¡Encuentro y protejo!”</p>
+  </div>
+</div>
 
-        // Botón "Borrar progreso" para eleminar los iconos de planeta visitado
-        document.getElementById("clear-storage").addEventListener("click", () => {
-        if (confirm("¿Seguro que querés borrar el progreso?")) {
-        localStorage.removeItem("planetasVisitados");
-        location.reload();}});
-        
-        // Lógica para voltear la tarjeta del piloto
-        document.querySelectorAll('.flip-piloto').forEach(card => {
-        card.addEventListener('click', () => {
-        card.classList.toggle('flipped');
-        });});
+<div class="crew-card" data-aos="fade-up">
+  <img src="./assets/tripulacion/gato.png" alt="Nyra" class="crew-photo">
+  <div class="crew-info">
+    <h2>Nyra</h2>
+    <p><strong>Origen:</strong> Rescatada de una estación minera abandonada en el cinturón de Drevos.</p>
+    <p><strong>Historia:</strong> Sobrevivió semanas en completo aislamiento hasta ser encontrada por Lyra. Desde entonces se convirtió en la “terapeuta no oficial” de la tripulación. Lleva un arnés que la identifica como “Emotional Support Pet”, con sensores que detectan los niveles de estrés de la tripulación.</p>
+    <p><strong>Personalidad:</strong> Tranquila, observadora y con una extraña habilidad para aparecer en el lugar y momento exacto en que alguien necesita consuelo.</p>
+    <p class="crew-phrase">“Acaríciala. Te hace bien.”</p>
+  </div>
+</div>
 
+<!--menu-->
 
-document.addEventListener("DOMContentLoaded", () => {
-const menuToggle = document.getElementById("menu-toggle");
-const menuFab = document.querySelector(".menu-fab");
-const btnBorrar = document.getElementById("btn-borrar");
-const btnFrase = document.getElementById("btn-frase");
-const fraseOutput = document.getElementById("frase-output");
+<div class="menu-fab">
+  <img src="../assets/cosas/ace.png" id="menu-toggle" class="menu-btn" alt="Menú">
+  <div class="menu-panel" id="menu-panel">
+    <a href="./pages/planetD.html"><img src="./assets/planetas/planet2.gif" alt="Planeta D" class="planeta-btn"></a>
+    <a href="./pages/planetW.html"><img src="./assets/planetas/planetW.gif" alt="Planeta W" class="planeta-btn"></a>
+    <a href="./pages/blackhole.html"><img src="./assets/planetas/blackhole.gif" alt="Agujero negro" class="planeta-btn"></a>
+    <a href="./pages/planetGG.html"><img src="./assets/planetas/planetGG.gif" alt="Planeta GG" class="planeta-btn"></a>
+    <a href="./pages/sun.html"><img src="./assets/planetas/sun.gif" alt="Sol" class="planeta-btn"></a>
+    <a href="./index.html">Sala de tripulacion</a>
+    
+    <a href="./pages/pilot-form.html"> Modificar piloto</a>
+    <button id="clear-storage">Borrar progreso</button>
+  </div>
+</div>
 
-const frases = [
-    "Tienes que visitar todos los planetas.",
-    "Soy tu asistente, desde aquí puedes modificar tu personaje o borrar el progreso.",
-    "Botón de destrucción interplanetario en la próxima versión...",
-    "¡Explora más para descubrir secretos!",
-    "Tu misión aún no ha terminado..."
-];
+<script>
 
-menuToggle.addEventListener("click", () => {
-    menuFab.classList.toggle("open");
-});
+// Constantes globales
+const PLANETS = ['blackhole', 'planetD', 'planetW', 'planetGG', 'sun'];
+const visited = JSON.parse(localStorage.getItem('planetasVisitados')) || [];
 
-btnBorrar.addEventListener("click", () => {
-    localStorage.clear();
-    alert("Progreso borrado");
+// Nombre y avatar del piloto
+const name = localStorage.getItem('pilotName');
+document.getElementById('showPilotName').textContent = name ? `Piloto: ${name}` : 'piloto sin nombre';
+
+const imgFile = localStorage.getItem('pilotImg');
+const imgElem = document.getElementById('showPilotImg');
+if (imgFile) {
+  imgElem.style.backgroundImage = `url('./assets/pilotos/${imgFile}')`;
+} else {
+  imgElem.style.backgroundImage = '';
+}
+
+// Botón "Borrar progreso"
+document.getElementById("clear-storage").addEventListener("click", () => {
+  if (confirm("¿Seguro que querés borrar el progreso?")) {
+    localStorage.removeItem("planetasVisitados");
     location.reload();
+  }
 });
 
-btnFrase.addEventListener("click", () => {
-    const randomIndex = Math.floor(Math.random() * frases.length);
-    fraseOutput.textContent = frases[randomIndex];
-});
+// Lógica para voltear la tarjeta del piloto
+document.querySelectorAll('.flip-piloto').forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('flipped');
+  });
 });
 
+
+
+// Mostrar estrellas por planetas visitados
+const stars = PLANETS.map(id => visited.includes(id) ? '✪' : '☆').join(' ');
+document.getElementById('planet-stars').textContent = stars;
+
+// Botón de audio
+const audio = document.getElementById('main-audio');
+const audioBtn = document.getElementById('audio-btn');
+let isPlaying = true;
+audioBtn.addEventListener('click', () => {
+  if (isPlaying) {
+    audio.pause();
+    audioBtn.innerHTML = '<i class="bi bi-volume-mute"></i>';
+  } else {
+    audio.play();
+    audioBtn.innerHTML = '<i class="bi bi-volume-up"></i>';
+  }
+  isPlaying = !isPlaying;
+});
+
+// Lógica para el menú flotante
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menu-toggle");
+  const menuFab = document.querySelector(".menu-fab");
+  menuToggle.addEventListener("click", () => {
+    menuFab.classList.toggle("open");
+  });
+});
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

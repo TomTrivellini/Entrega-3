@@ -4,16 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body class="planetGG">
 
-    <main>
-        <a href="../index.html"> <img src="../assets/planetas/galaxy.gif" alt="agujero de gusano que te lleva al sistema" class="planeta-btn"></a>
-            <img src="../assets/planetas/planetGG.gif" alt="Planeta Gigante Gaseoso" >
-            <p> Planeta GG (Giant Gas)Un titán de nubes arremolinadas y tormentas eléctricas eternas, el Planeta GG es hogar de la raza Gorr’th, gigantes de piel pétrea y mirada de fuego. Viven en ciudades flotantes ancladas en la atmósfera superior, construidas sobre placas de metal y cristal que resisten vientos huracanados. El embajador Kragg-Thur es un coloso con voz como trueno. Neutral en sus alianzas, pero rápido para tomar represalias ante la más mínima falta de respeto: "Aquí, forastero, la cortesía es tu única armadura. Pierde eso… y te pierdes en las nubes para siempre". Aun así, sus recursos energéticos y conocimientos sobre control climático lo convierten en un socio valioso… si logras ganarte su confianza.</p>
-    </main>
+<header class="header container-fluid py-2">
+  <div class="header-flex">
+    <div class="header-left">
+      <button id="audio-btn" type="button" class="btn btn-success btn-lg rounded-circle me-2" aria-label="Pausar/Reanudar audio">
+        <i class="bi bi-volume-up"></i>
+      </button>
+    </div>
+    <div class="header-center">
+      <div id="planet-stars" class="estrellas"></div>
+    </div>
+    <div class="header-right">
+    </div>
+  </div>
+  <audio id="main-audio" loop>
+    <source src="../assets/audio/tranqui.mp3" type="audio/mpeg">
+  </audio>
+</header>
+
+<p> Planeta GG (Giant Gas)Un titán de nubes arremolinadas y tormentas eléctricas eternas, el Planeta GG es hogar de la raza Gorr’th, gigantes de piel pétrea y mirada de fuego. Viven en ciudades flotantes ancladas en la atmósfera superior, construidas sobre placas de metal y cristal que resisten vientos huracanados. El embajador Kragg-Thur es un coloso con voz como trueno. Neutral en sus alianzas, pero rápido para tomar represalias ante la más mínima falta de respeto: "Aquí, forastero, la cortesía es tu única armadura. Pierde eso… y te pierdes en las nubes para siempre". Aun así, sus recursos energéticos y conocimientos sobre control climático lo convierten en un socio valioso… si logras ganarte su confianza.</p>
+<img src="../assets/planetas/planetGG.gif" alt="Planeta GG" class="planeta-fondo" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+
+<div class="crew-card">
+<img src="../assets/personajes/planGG.png" alt="Embajador Kragg-Thur " class="crew-photo">
+<div class="crew-info">
+    <h2>Embajador Kragg-Thur</h2>
+    <p><strong>Origen:</strong> Forjado en cavernas volcánicas de GG, donde magma y roca templaron su espíritu indomable.</p>
+    <p><strong>Historia:</strong> Nacido en las cavernas de magma del planeta GG, Kragg-Thur ascendió como guerrero antes de convertirse en diplomático. Sus cicatrices son crónicas de guerras pasadas, pero ahora las exhibe como símbolos de poder y sabiduría en la mesa de negociación.</p>
+    <p><strong>Personalidad:</strong> Estoico, imponente y pragmático; prefiere el silencio cargado de autoridad a discursos vacíos, y siempre protege a los suyos.</p>
+    <p class="crew-phrase">“Donde otros hablan, yo sostengo la roca; y la roca nunca cede.”</p>
+</div>
+</div>
+
+<div class="crew-card">
+  <img src="../assets/cosas/Horus_Cell.png" alt="maquina de batalla" class="crew-image">
+  <div class="crew-info">
+    <h2>Ejercito de los Gorr’th</h2>
+    <p>Los Gorr’th emergieron de un mundo letal, fusionando carne y máquina. Su ejército combina instinto depredador y precisión tecnológica, conquistando a través de disciplina y ferocidad sin igual.</p>
+    <p>Resilientes, brutales, disciplinados, adaptativos. Un Gorr’th nunca teme a la muerte: ya nació en ella.</p>
+  </div>
+</div>
+<!--Menu-->
+<div class="menu-fab">
+<img src="../assets/planetas/planetGG.gif" id="menu-toggle" class="menu-btn"></img>
+
+<div class="menu-panel" id="menu-panel">
+
+    <a href="./planetD.html"><img src="../assets/planetas/planet2.gif" alt="Planeta D" class="planeta-btn"></a>
+    <a href="./planetW.html"><img src="../assets/planetas/planetW.gif" alt="Planeta W" class="planeta-btn"></a>
+    <a href="./blackhole.html"><img src="../assets/planetas/blackhole.gif" alt="Agujero negro" class="planeta-btn"></a>
+    <a href="./planetGG.html"><img src="../assets/planetas/planetGG.gif" alt="Planeta GG" class="planeta-btn"></a>
+    <a href="./sun.html"><img src="../assets/planetas/sun.gif" alt="Sol" class="planeta-btn"></a>
+    <a href="../index.html">Sala de tripulacion</a>
+    <a href="./pilot-form.html">✏ Modificar piloto</a>
+</div>
+</div>
     <script>
+// Constantes globales
+const PLANETS = ['blackhole', 'planetD', 'planetW', 'planetGG', 'sun'];
+const visited = JSON.parse(localStorage.getItem('planetasVisitados')) || [];
+
+// Mostrar estrellas por planetas visitados
+const stars = PLANETS.map(id => visited.includes(id) ? '✪' : '☆').join(' ');
+document.getElementById('planet-stars').textContent = stars;
+
+// Botón de audio
+const audio = document.getElementById('main-audio');
+const audioBtn = document.getElementById('audio-btn');
+let isPlaying = true;
+audioBtn.addEventListener('click', () => {
+  if (isPlaying) {
+    audio.pause();
+    audioBtn.innerHTML = '<i class="bi bi-volume-mute"></i>';
+  } else {
+    audio.play();
+    audioBtn.innerHTML = '<i class="bi bi-volume-up"></i>';
+  }
+  isPlaying = !isPlaying;
+});
+
         function marcarPlanetaVisitado(planetaId) {
     let visitados = JSON.parse(localStorage.getItem('planetasVisitados')) || [];
     if (!visitados.includes(planetaId)) {
@@ -21,9 +98,23 @@
         localStorage.setItem('planetasVisitados', JSON.stringify(visitados));
     }
 }
-
-
 marcarPlanetaVisitado('planetGG');
-    </script>
+
+document.addEventListener("DOMContentLoaded", () => {
+const menuToggle = document.getElementById("menu-toggle");
+const menuFab = document.querySelector(".menu-fab");
+menuToggle.addEventListener("click", () => {
+    menuFab.classList.toggle("open");
+});
+
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+//Animaciones AOS
+AOS.init();
+</script>
+
 </body>
 </html>
