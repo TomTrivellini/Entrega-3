@@ -3,28 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sol - Sistema Llyos</title>
+    <!--Seo-->
+    <link rel="shortcut icon" href="../assets/planetas/sun.gif">
+    <meta name="description" content="Llyos, quien le da nombre a este sistema lleno de vida ">
+    <meta name="keywords" content="Llyos, sol, sistema">
+    <meta name="author" content="Tomas Trivellini">
+    <title>LLyos - Sistema Llyos</title>
+    <!--links-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="sun">
-<header class="header container-fluid py-2">
+<header class="header">
   <div class="header-flex">
     <div class="header-left">
-      <button id="audio-btn" type="button" class="btn btn-success btn-lg rounded-circle me-2" aria-label="Pausar/Reanudar audio">
-        <i class="bi bi-volume-up"></i>
-      </button>
-    </div>
+      <div class="menu-fab">
+      <img src="../assets/planetas/sun.gif" id="menu-toggle" class="menu-btn" alt="Menú">
+      
+      <div class="menu-panel" id="menu-panel">
+      <a href="./planetD.html"><img src="../assets/planetas/planet2.gif" alt="Planeta D" class="planeta-btn"></a>
+      <a href="./planetW.html"><img src="../assets/planetas/planetW.gif" alt="Planeta W" class="planeta-btn"></a>
+      <a href="./blackhole.html"><img src="../assets/planetas/blackhole.gif" alt="Agujero negro" class="planeta-btn"></a>
+      <a href="./planetGG.html"><img src="../assets/planetas/planetGG.gif" alt="Planeta GG" class="planeta-btn"></a>
+      <a href="./sun.html"><img src="../assets/planetas/sun.gif" alt="Sol" class="planeta-btn"></a>
+      <a href="../index.html">sala de tripulacion</a> 
+      <a href="./pilot-form.html"> Datos del piloto </a>
+      <button id="clear-storage">Borrar progreso</button>
+      </div>
+      </div>
+  </div>
+    
     <div class="header-center">
       <div id="planet-stars" class="estrellas"></div>
     </div>
-    <div class="header-right"></div>
+
+  <div class="header-right">
+    <button id="audio-btn" type="button" class="btn btn-success btn-lg rounded-circle me-2" aria-label="Pausar/Reanudar audio">
+    <i class="bi bi-volume-up"></i>
+  </button>
   </div>
   <audio id="main-audio" loop>
-    <source src="../assets/audio/tranqui.mp3" type="audio/mpeg">
+  <source src="./assets/audio/tranqui.mp3" type="audio/mpeg">
   </audio>
+  </div>
 </header>
 
 <p>
@@ -51,20 +74,6 @@
   </button>
   <div class="reproductor-info" id="song-info">Canción actual</div>
   <audio id="audio-player"></audio>
-</div>
-
-<!--Menu-->
-<div class="menu-fab">
-<img src="../assets/planetas/sun.gif" id="menu-toggle" class="menu-btn" alt="Menú">
-<div class="menu-panel" id="menu-panel">
-    <a href="./planetD.html"><img src="../assets/planetas/planet2.gif" alt="Planeta D" class="planeta-btn"></a>
-    <a href="./planetW.html"><img src="../assets/planetas/planetW.gif" alt="Planeta W" class="planeta-btn"></a>
-    <a href="./blackhole.html"><img src="../assets/planetas/blackhole.gif" alt="Agujero negro" class="planeta-btn"></a>
-    <a href="./planetGG.html"><img src="../assets/planetas/planetGG.gif" alt="Planeta GG" class="planeta-btn"></a>
-    <a href="./sun.html"><img src="../assets/planetas/sun.gif" alt="Sol" class="planeta-btn"></a>
-    <a href="../index.html">Sala de tripulacion</a>
-    <a href="./pilot-form.html">✏ Modificar piloto</a>
-</div>
 </div>
 
 <script>

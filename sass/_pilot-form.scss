@@ -1,7 +1,7 @@
 @use "variables" as *;
 
 .form-page {
-min-height: 100vh;
+width: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -9,68 +9,118 @@ padding: 1rem;
 }
 
 .form-wrapper {
+background: $fondoTexto;
 padding: 2rem;
 border-radius: 1rem;
-max-width: 250px;
+width: 100%;
+max-width: 320px;
+box-shadow: $boxshadow;
 display: block;
-text-align: center
-    label, h3 {
-    color: $fuente;
-    text-shadow: $textshadow;
+text-align: center;
+    label{
+            color: $fuente;
+            text-shadow: $textshadow;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-align: center;
+            font-size: 1.1rem;
+        }
     }
-}
 
 #pilotCarousel {
-    box-shadow: $boxshadow;
-    border: 2px solid $verde;
-.carousel-inner {
+    border: 2px;
     border-radius: 0.5rem;
-    
-}
-.carousel-
-img {
+    overflow: hidden;
+    margin-bottom: 1rem;
+    position: relative;
+.carousel-inner {
+    border-radius: 0.5rem;}
+.carousel-img {
     object-fit: contain;
+    }}
+
+.carousel-btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
     }
-}
-
-a,button {
-    display: block;
-    
-    background: $fondoTexto;
-    border: $border;
-    color: $fuente;
-    text-decoration: none;
-    padding: 6px 12px;
-    border-radius: 8px;
-    text-align: center;
-    text-shadow: $textshadow;
-    font-size: 0.9rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-
-input[type="text"],
-input[type="number"],
-input[type="email"],
-input.form-control {
+.crs_btn{
     background: $fondoTexto;
     color: $fuente;
-    border: 1.5px solid $verde;
-    border-radius: 0.7rem;
-    box-shadow: 0 0 8px $fuente;
-    font-family: $font;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
-    transition: box-shadow 0.3s, border-color 0.3s;
-    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    }
 
-&:focus {
-    outline: none;
-    box-shadow: 0 0 16px $verde;
-    background: $fondoTexto;
-    color: $fuente;
-    text-align: center;
-}
+    .crs_btn:hover {
+    box-shadow: $boxshadow;
+    background: rgba(0, 255, 157, 0.3);
+    transform: scale(1.1);
+    }
+
+
+        input[type="text"],
+        input[type="date"],
+        input[type="color"],
+        input.form-control {
+            background: $fondoTexto;
+            color: $fuente;
+            border: 1.5px;
+            border-radius: 0.7rem;
+            font-size: 1rem;
+            padding: 0.6rem 1rem;
+            margin-bottom: 1.2rem;
+            transition: box-shadow 0.3s, border-color 0.3s;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="color"]:focus,
+        input.form-control:focus {
+            outline: none;
+            box-shadow:  $boxshadow;
+            color: $fuente;
+        }
+
+        input[type="color"] {
+            height: 50px;
+            padding: 0.2rem;
+        }
+
+.action-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    a, button {
+        justify-content: center;
+        background: $fondoTexto;
+        color: $fuente;
+        text-decoration: none;
+        border: 1px;
+        border-radius: 8px;
+        text-align: center;
+        text-shadow: $textshadow;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        &:hover {
+        box-shadow: $boxshadow;
+        background: $hover;
+        transform: scale(1.05);}
+    }
 }

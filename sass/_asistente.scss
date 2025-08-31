@@ -1,0 +1,62 @@
+@use "variables" as *;
+
+.asistente {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .asistente_btn {
+            width: 56px;
+            height: 56px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            
+        }
+
+        .asistente_btn:hover {
+            animation: warp-shake 0.3s infinite ease-in-out;
+        }
+
+        @keyframes warp-shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .asistente_menu {
+            position: absolute;
+            opacity: 0;
+            display: none;
+            bottom: 70px;
+            right: 0;
+            width: 300px;
+            background: $fondoTexto;
+            border-radius: 12px;
+            box-shadow: $boxshadow;
+            padding: 15px;
+            transition: opacity 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .asistente.open .asistente_menu {
+            opacity: 1;
+            display: block;
+        }
+        .soundcloud-credits {
+            margin-top: 10px;
+            font-size: 10px;
+            color: #cccccc;
+            font-family: Arial, sans-serif;
+        }
+
+        .soundcloud-credits a {
+            color: #cccccc;
+            text-decoration: none;
+        }
+
+        .soundcloud-credits a:hover {
+            text-decoration: underline;
+        }

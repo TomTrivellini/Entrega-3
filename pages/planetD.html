@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Seo-->
+    <link rel="shortcut icon" href="../assets/planetas/planet2.gif">
     <meta name="description" content="Planeta Arido del sistema Lyos">
     <meta name="keywords" content="planeta D, Sir D'rahm Val-Kesh,Khal-Daar">
+    <meta name="author" content="Tomas Trivellini">
     <title>Planet D</title>
-    
+    <!--links-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -15,24 +18,40 @@
 
 <body class="planetD">
 
-<header class="header container-fluid py-2">
+<header class="header">
   <div class="header-flex">
     <div class="header-left">
-      <button id="audio-btn" type="button" class="btn btn-success btn-lg rounded-circle me-2" aria-label="Pausar/Reanudar audio">
-        <i class="bi bi-volume-up"></i>
-      </button>
-    </div>
+      <div class="menu-fab">
+      <img src="../assets/planetas/planet2.gif" id="menu-toggle" class="menu-btn" alt="Menú">
+      
+      <div class="menu-panel" id="menu-panel">
+      <a href="./planetD.html"><img src="../assets/planetas/planet2.gif" alt="Planeta D" class="planeta-btn"></a>
+      <a href="./planetW.html"><img src="../assets/planetas/planetW.gif" alt="Planeta W" class="planeta-btn"></a>
+      <a href="./blackhole.html"><img src="../assets/planetas/blackhole.gif" alt="Agujero negro" class="planeta-btn"></a>
+      <a href="./planetGG.html"><img src="../assets/planetas/planetGG.gif" alt="Planeta GG" class="planeta-btn"></a>
+      <a href="./sun.html"><img src="../assets/planetas/sun.gif" alt="Sol" class="planeta-btn"></a>
+      <a href="../index.html">sala de tripulacion</a> 
+      <a href="./pilot-form.html"> Datos del piloto </a>
+      <button id="clear-storage">Borrar progreso</button>
+      </div>
+      </div>
+  </div>
+    
     <div class="header-center">
       <div id="planet-stars" class="estrellas"></div>
     </div>
-    <div class="header-right">
-      <!-- Puedes dejar vacío o agregar contenido extra si lo necesitas -->
-    </div>
+
+  <div class="header-right">
+    <button id="audio-btn" type="button" class="btn btn-success btn-lg rounded-circle me-2" aria-label="Pausar/Reanudar audio">
+    <i class="bi bi-volume-up"></i>
+  </button>
   </div>
   <audio id="main-audio" loop>
-    <source src="../assets/audio/tranqui.mp3" type="audio/mpeg">
+  <source src="./assets/audio/tranqui.mp3" type="audio/mpeg">
   </audio>
+  </div>
 </header>
+
 
 
 <p> Planeta D (Dry) En el árido Planeta D, las tormentas de polvo son tan densas que las noches y los días se confunden en un manto dorado perpetuo. Aquí prospera la civilización Khal-Daar, maestros del aprovechamiento de cada gota de humedad. Sus ciudades se construyen en cavernas profundas para protegerse del viento abrasador, y sus canales subterráneos transportan el agua como si fueran venas vivas del planeta. El embajador Sir D'rahm Val-Kesh, de túnica carmesí y hablar refinado, recibe a los visitantes con ceremonias impecables. Su cortesía es tal que incluso sus advertencias suenan como elogios: "Espero que disfrute de nuestro desierto… y que nunca se pierda en él".</p>
@@ -56,21 +75,6 @@
     <h2>Heavy_engineer</h2>
     <p>Imponente y multifuncional, esta máquina de Khal-Daar combina armamento pesado, blindaje adaptable y brazos versátiles para combate y construcción. Sus sensores avanzados aseguran precisión absoluta, mientras su capacidad de carga y reparación la convierten en pilar indispensable: protector, constructor y símbolo de poder inquebrantable para su pueblo.</p>
   </div>
-</div>
-
-<!--Menu-->
-<div class="menu-fab">
-<img src="../assets/planetas/planet2.gif" id="menu-toggle" class="menu-btn"></img>
-<div class="menu-panel" id="menu-panel">
-
-    <a href="./planetD.html"><img src="../assets/planetas/planet2.gif" alt="Planeta D" class="planeta-btn"></a>
-    <a href="./planetW.html"><img src="../assets/planetas/planetW.gif" alt="Planeta W" class="planeta-btn"></a>
-    <a href="./blackhole.html"><img src="../assets/planetas/blackhole.gif" alt="Agujero negro" class="planeta-btn"></a>
-    <a href="./planetGG.html"><img src="../assets/planetas/planetGG.gif" alt="Planeta GG" class="planeta-btn"></a>
-    <a href="./sun.html"><img src="../assets/planetas/sun.gif" alt="Sol" class="planeta-btn"></a>
-    <a href="../index.html">Sala de tripulacion</a>
-    <a href="./pilot-form.html">✏ Modificar piloto</a>
-</div>
 </div>
 
 

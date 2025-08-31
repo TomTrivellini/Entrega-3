@@ -1,0 +1,103 @@
+@use "variables" as *;
+
+.menu-fab {
+  position: relative;
+  display: inline-block;
+  .menu-btn {
+    width: 56px;
+    height: 56px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    &:hover {
+      animation: warp-shake 0.3s infinite ease-in-out;}
+    @keyframes warp-shake {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(5deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(-5deg); }
+      100% { transform: rotate(0deg); }
+    }
+  }
+
+  .menu-panel {
+    position:absolute;
+    top: calc(100% + 40px);
+    left: 0;
+    width: max-content;
+    max-width: 90vw;
+    display: none;
+    border-radius: 12px;
+    text-align: center;
+    padding: 15px;
+    z-index: 1001;
+    background: $fondoTexto;
+    box-shadow: $boxshadow;
+    grid-template-columns: repeat(4, auto);
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+
+    a, button {
+      background: rgba(3, 56, 52, 0.527);
+      color: $fuente;
+      text-decoration: none;
+      border-radius: 8px;
+      text-align: center;
+      text-shadow: $textshadow;
+      font-size: 0.9rem;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      &:hover {
+      background: rgba(0, 255, 157, 0.3);
+      transform: scale(1.05);
+      }
+    }
+  }
+
+  &.open .menu-panel {
+    display: grid;
+    opacity: 1;
+    transform: translateY(0);
+    
+    
+  }
+  
+}
+
+.planeta-btn {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+@media (max-width: 600px) {
+  .menu-fab {
+    .menu-btn {
+      width: 45px;
+      height: 45px;
+    }
+    .menu-panel {
+      grid-template-columns: repeat(1, auto);
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      a,button {
+        font-size: 0.8rem;
+      }
+      
+    &.open .menu-panel{transform: translateX(-50%) translateY(0);}}
+  }
+
+  .planeta-btn {
+    width: 45px;
+    height: 45px;
+  }
+}

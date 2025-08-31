@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!--Seo-->
+    <link rel="shortcut icon" href="../assets/planetas/planetGG.gif">
+    <meta name="description" content="Planeta hostil del sistema Llyos ">
+    <meta name="keywords" content="planeta GG, Kragg-Thur, Gorr’th ">
+    <meta name="author" content="Tomas Trivellini">
+    <!--links-->
+    <title>Planeta GG</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -12,23 +18,40 @@
 
 <body class="planetGG">
 
-<header class="header container-fluid py-2">
+<header class="header">
   <div class="header-flex">
     <div class="header-left">
-      <button id="audio-btn" type="button" class="btn btn-success btn-lg rounded-circle me-2" aria-label="Pausar/Reanudar audio">
-        <i class="bi bi-volume-up"></i>
-      </button>
-    </div>
+      <div class="menu-fab">
+      <img src="../assets/planetas/planetGG.gif" id="menu-toggle" class="menu-btn" alt="Menú">
+      
+      <div class="menu-panel" id="menu-panel">
+      <a href="./planetD.html"><img src="../assets/planetas/planet2.gif" alt="Planeta D" class="planeta-btn"></a>
+      <a href="./planetW.html"><img src="../assets/planetas/planetW.gif" alt="Planeta W" class="planeta-btn"></a>
+      <a href="./blackhole.html"><img src="../assets/planetas/blackhole.gif" alt="Agujero negro" class="planeta-btn"></a>
+      <a href="./planetGG.html"><img src="../assets/planetas/planetGG.gif" alt="Planeta GG" class="planeta-btn"></a>
+      <a href="./sun.html"><img src="../assets/planetas/sun.gif" alt="Sol" class="planeta-btn"></a>
+      <a href="../index.html">sala de tripulacion</a> 
+      <a href="./pilot-form.html"> Datos del piloto </a>
+      <button id="clear-storage">Borrar progreso</button>
+      </div>
+      </div>
+  </div>
+    
     <div class="header-center">
       <div id="planet-stars" class="estrellas"></div>
     </div>
-    <div class="header-right">
-    </div>
+
+  <div class="header-right">
+    <button id="audio-btn" type="button" class="btn btn-success btn-lg rounded-circle me-2" aria-label="Pausar/Reanudar audio">
+    <i class="bi bi-volume-up"></i>
+  </button>
   </div>
   <audio id="main-audio" loop>
-    <source src="../assets/audio/tranqui.mp3" type="audio/mpeg">
+  <source src="./assets/audio/tranqui.mp3" type="audio/mpeg">
   </audio>
+  </div>
 </header>
+
 
 <p> Planeta GG (Giant Gas)Un titán de nubes arremolinadas y tormentas eléctricas eternas, el Planeta GG es hogar de la raza Gorr’th, gigantes de piel pétrea y mirada de fuego. Viven en ciudades flotantes ancladas en la atmósfera superior, construidas sobre placas de metal y cristal que resisten vientos huracanados. El embajador Kragg-Thur es un coloso con voz como trueno. Neutral en sus alianzas, pero rápido para tomar represalias ante la más mínima falta de respeto: "Aquí, forastero, la cortesía es tu única armadura. Pierde eso… y te pierdes en las nubes para siempre". Aun así, sus recursos energéticos y conocimientos sobre control climático lo convierten en un socio valioso… si logras ganarte su confianza.</p>
 <img src="../assets/planetas/planetGG.gif" alt="Planeta GG" class="planeta-fondo" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
@@ -52,22 +75,9 @@
     <p>Resilientes, brutales, disciplinados, adaptativos. Un Gorr’th nunca teme a la muerte: ya nació en ella.</p>
   </div>
 </div>
-<!--Menu-->
-<div class="menu-fab">
-<img src="../assets/planetas/planetGG.gif" id="menu-toggle" class="menu-btn"></img>
 
-<div class="menu-panel" id="menu-panel">
 
-    <a href="./planetD.html"><img src="../assets/planetas/planet2.gif" alt="Planeta D" class="planeta-btn"></a>
-    <a href="./planetW.html"><img src="../assets/planetas/planetW.gif" alt="Planeta W" class="planeta-btn"></a>
-    <a href="./blackhole.html"><img src="../assets/planetas/blackhole.gif" alt="Agujero negro" class="planeta-btn"></a>
-    <a href="./planetGG.html"><img src="../assets/planetas/planetGG.gif" alt="Planeta GG" class="planeta-btn"></a>
-    <a href="./sun.html"><img src="../assets/planetas/sun.gif" alt="Sol" class="planeta-btn"></a>
-    <a href="../index.html">Sala de tripulacion</a>
-    <a href="./pilot-form.html">✏ Modificar piloto</a>
-</div>
-</div>
-    <script>
+<script>
 // Constantes globales
 const PLANETS = ['blackhole', 'planetD', 'planetW', 'planetGG', 'sun'];
 const visited = JSON.parse(localStorage.getItem('planetasVisitados')) || [];
