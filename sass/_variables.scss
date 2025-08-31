@@ -1,5 +1,7 @@
 /* tipografia */
-$font: 'bahnschrift', bold;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+$font: "Raleway", sans-serif;
 
 /* fondos */
 $background: url('../assets/backgrounds/backgrounds.png');
