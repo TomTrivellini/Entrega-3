@@ -460,7 +460,6 @@ input[type=color] {
   gap: 1.2rem;
   background: linear-gradient(135deg, rgba(2, 78, 49, 0.445), rgba(14, 80, 49, 0.671));
   border-radius: 1.2rem;
-  box-shadow: 0 0 20px #eafff7;
   padding: 1rem 2rem;
   margin: 2rem auto;
   max-width: 400px;
@@ -468,7 +467,7 @@ input[type=color] {
 .reproductor-musica .reproductor-btn {
   background: linear-gradient(135deg, rgba(2, 78, 49, 0.445), rgba(14, 80, 49, 0.671));
   color: #eafff7;
-  border: 1px solid #09a143;
+  border: 1px;
   border-radius: 50%;
   width: 48px;
   height: 48px;
@@ -477,12 +476,10 @@ input[type=color] {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 0 10px #eafff7;
   transition: 0.3s, transform 0.3s;
 }
 .reproductor-musica .reproductor-btn:hover {
-  background: #09a143;
-  color: #222;
+  background: rgba(0, 255, 157, 0.3);
   transform: scale(1.08);
 }
 .reproductor-musica .reproductor-info {

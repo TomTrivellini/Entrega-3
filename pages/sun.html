@@ -55,12 +55,7 @@
 <img src="../assets/planetas/sun.gif" alt="Sol" class="planeta-fondo" data-aos="zoom-in-down" data-aos-easing="linear" data-aos-duration="1500">
 
 <div class="crew-card" data-aos="flip-up">
-    <img src="../assets/tripulacion/Dj.png" alt="Sun" class="crew-photo">
-    <div class="crew-info">
-        <p>¡Piloto! Dime si este lugar no es perfecto para un show en vivo, ponte comodo y escucha un poco de musica.</p>
-    </div>
-</div>
-
+    <img src="../assets/tripulacion/Dj.png" alt="Sun" class="crew-image">
 <div class="reproductor-musica" >
   <button class="reproductor-btn" id="prev-btn" aria-label="Anterior">
     <i class="bi bi-skip-backward-fill"></i>
@@ -74,6 +69,9 @@
   <div class="reproductor-info" id="song-info">Canción actual</div>
   <audio id="audio-player"></audio>
 </div>
+</div>
+
+
 
 <script>
 // Constantes globales
@@ -114,8 +112,10 @@ const songInfo = document.getElementById('song-info');
 
 const songs = [
   { src: "../assets/audio/cyberpsycosis-187772.mp3", name: "cyberpsycosis" },
-  { src: "../assets/audio/GG.mp3", name: "perdi el nombre :c" },
-  { src: "../assets/audio/problems-188614.mp3", name: "problems" }
+  { src: "../assets/audio/GG.mp3", name: "arabic mode" },
+  { src: "../assets/audio/problems-188614.mp3", name: "problems" },
+  { src:"../assets/audio/i-will-take-you-to-the-moon-187771.mp3", name:"i will take you to the moon"},
+  { src:"../assets/audio/tranqui.mp3", name:"Home"}
 ];
 let currentSong = 0;
 let isPlayerPlaying = false;
